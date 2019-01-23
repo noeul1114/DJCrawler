@@ -13,14 +13,15 @@ logger = logging.getLogger(__name__)
 
 class Slrclub(BaseSite):
 
-    def __init__(self, *, threshold=15, page_max=20):
+    def __init__(self, *, threshold=15, page_max=20, page_min=1):
         BaseSite.__init__(self)
         self.threshold = threshold
+        self.pageMin = page_min
         self.pageMax = page_max
 
     def crawler(self):
         l = logger.getChild('Slrclub.crawler')
-        for page in range(1, self.pageMax, 1):
+        for page in range(self.pageMin, self.pageMax, 1):
             host = 'http://www.slrclub.com/bbs/zboard.php'
             query = 'id=free&page={}'.format(page)
             self.url = '{host}?{query}'.format(host=host, query=query)

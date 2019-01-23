@@ -9,6 +9,8 @@ from .base import BaseSite
 from ..exc import SkipCrawler
 from ..serializers import payload_serializer
 
+import encodings.utf_8 as utf
+
 logger = logging.getLogger(__name__)
 
 
@@ -64,6 +66,6 @@ class Ppomppu(BaseSite):
 
                         obj = payload_serializer(type=self.type, id=_id,
                                                  link=_link, count=_count,
-                                                 title=_title, article=_article)
+                                                 title=utf.decode(_title), article=utf.decode(_title))
                         self.django_insert_update(obj)
                         # self.insert_or_update_postgres(obj)

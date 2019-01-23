@@ -76,16 +76,24 @@ WSGI_APPLICATION = 'django_crawler.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
+if DEBUG:
+    DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'test',
-            'USER': 'postgres',
-            'PASSWORD': 'qudtlstz1',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+else:
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'test',
+                'USER': 'postgres',
+                'PASSWORD': 'qudtlstz1',
+                'HOST': '127.0.0.1',
+                'PORT': '5432',
+            }
+        }
 
 
 # Password validation
@@ -123,6 +131,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+# MEDIA_URL = 'C:/Users/willypower/PycharmProjects/untitled/images/걸스데이 혜리/'
+MEDIA_ROOT = '/image/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

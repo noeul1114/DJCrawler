@@ -57,13 +57,13 @@ class Crawler(threading.Thread):
 
 def crawler(*, queue: Queue):
     sites = [
-        Clien(threshold=20, page_max=10),
-        Ppomppu(threshold=30, page_max=10),
-        # Slrclub(threshold=30, page_max=10),
-        Todayhumor(threshold=40, page_max=10),
-        RuliwebHobby(threshold=35, page_max=5),
-        RuliwebHumor(threshold=35, page_max=5),
-
+        # Clien(threshold=20, page_max=10),
+        # Ppomppu(threshold=30, page_max=10),
+        Slrclub(threshold=30, page_max=2500, page_min=2100),
+        # Todayhumor(threshold=40, page_max=10),
+        # RuliwebHobby(threshold=35, page_max=5),
+        # RuliwebHumor(threshold=35, page_max=5),
+        #
         # Slrclub_Hot(threshold=40, page_max=7000),
         # RuliwebHotdeal(threshold=15, page_max=10),
     ]
